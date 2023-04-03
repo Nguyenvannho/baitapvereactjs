@@ -1,23 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import './App.css';
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import StudentInfoComponent from './StudentInfoComponent';
-
-const students = [
-  { id: 1, name: "Tạ Đình Phong", age: 25, address: "Quần Đảo Hoàng Sa" },
-  { id: 2, name: "Trịnh Phong Tâm", age: 31, address: "Miền Tây Nam Bộ" },
-  { id: 3, name: "Nguyễn Như Ngọc", age: 22, address: "Gio Linh" },
-];
+import Counter from "./components/Counter";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StudentInfoComponent students={students}/>
-  </React.StrictMode>
+  <Counter />
+</React.StrictMode>
 );
 
 
