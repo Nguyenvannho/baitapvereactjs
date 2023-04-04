@@ -1,54 +1,16 @@
-/* //Thực hành 1 */
-/* label {
-  display: block;
+/* .container {
+  width: 300px;
+  margin: auto;
 }
 
-.custom-input {
-  padding-bottom: 2%;
-}
-
-.custom-input-error label {
-  color: red;
-}
-
-.custom-input-error input {
-  border: 2px solid red;
-  border-radius: 4px;
-}
-
-
-.error {
-  color: red;
-  margin: 0;
-} */
-
-/* //Thực hành 2 */
-/* label {
-  display: block;
-}
-
-.custom-input {
-  padding-bottom: 2%;
-}
-
-.custom-input-error label {
-  color: red;
-}
-
-.custom-input-error input {
-  border: 2px solid red;
-  border-radius: 4px;
-}
-
-.error {
-  color: red;
-  margin: 0;
-} */
-/* //thực hành 3 */
 label {
   display: block;
 }
 
+input {
+  width: 100%;
+}
+
 .custom-input {
   padding-bottom: 2%;
 }
@@ -65,4 +27,123 @@ label {
 .error {
   color: red;
   margin: 0;
+}
+
+.width-auto {
+  width: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+} */
+
+/* //bt3
+ */
+
+/* 
+ div.error {
+  color: red;
+}
+input,
+label,
+button {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+ .form-wrapper {
+  width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+} */
+
+
+/* //bt4 */
+.container {
+  width: 300px;
+  margin: auto;
+}
+
+label {
+  display: block;
+}
+
+input, textarea, button {
+  width: 100%;
+}
+
+.custom-input {
+  padding-bottom: 2%;
+}
+
+.custom-input-error label {
+  color: red;
+}
+
+.custom-input-error input {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+.custom-input-error textarea {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  margin: 0;
+}
+
+.width-auto {
+  width: auto;
+}
+
+.flex {
+  display: flex;
 }

@@ -1,300 +1,229 @@
-import React, { useState } from "react";
-import { Formik } from "formik";
-import "./App.css";
+import React, { useState } from 'react';
+import { Formik } from 'formik';
+import './App.css';
 
-export default function App() {
-  // Thực hành 1 
+// const REGEX = {
+//   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+// };
 
-  // const MESSAGE_ERROR = {
-  //   username: "Username error",
-  //   email: "Email error",
-  //   password: "Password error",
-  //   confirmPassword: "Password must be the same"
-  // };
+// function App() {
+//   const [form, setForm] = useState({});
+//   const [errors, setErrors] = useState({});
 
-  // const REGEX = {
-  //   username: /^[a-zA-Z]{2,}$/,
-  //   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  //   password: /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{6,}$/
-  // };
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
+//     setForm((prevState) => ({ ...prevState, [name]: value }));
+//   };
 
-  // const [form, setForm] = useState({});
+//   const handleValidate = (values) => {
+//     const newErrors = {};
 
-  // function handleChange(event) {
-  //   let error = "";
-  //   if (event.target.name === "password") {
-  //     if (form.confirmPassword && form.confirmPassword.value) {
-  //       error =
-  //         event.target.value === form.confirmPassword.value
-  //           ? ""
-  //           : MESSAGE_ERROR[event.target.name];
-  //     } else {
-  //       error = REGEX[event.target.name].test(event.target.value)
-  //         ? ""
-  //         : MESSAGE_ERROR[event.target.name];
-  //     }
-  //   } else if (event.target.name === "confirmPassword") {
-  //     error =
-  //       event.target.value === form.password.value
-  //         ? ""
-  //         : MESSAGE_ERROR[event.target.name];
-  //   } else {
-  //     error = REGEX[event.target.name].test(event.target.value)
-  //       ? ""
-  //       : MESSAGE_ERROR[event.target.name];
-  //   }
-  //   setForm({
-  //     ...form,
-  //     [event.target.name]: { value: event.target.value, error: error }
-  //   });
-  // }
+//     if (!values.name) {
+//       newErrors.name = 'Required';
+//     }
 
-  // function handleSubmit() {
-  //   const isFilled =
-  //     form.username &&
-  //     form.username.value &&
-  //     form.email &&
-  //     form.email.value &&
-  //     form.password &&
-  //     form.password.value &&
-  //     form.confirmPassword &&
-  //     form.confirmPassword.value;
-  //   const isError =
-  //     isFilled &&
-  //     (form.username.error ||
-  //       form.email.error ||
-  //       form.password.error ||
-  //       form.confirmPassword.error);
+//     if (!values.email) {
+//       newErrors.email = 'Required';
+//     } else if (!REGEX.email.test(values.email)) {
+//       newErrors.email = 'Invalid email address';
+//     }
 
-  //   alert(
-  //     isFilled && !isError
-  //       ? "Sign up successfully!!!"
-  //       : "Please fill out all the fields!!!"
-  //   );
-  // }
+//     if (!values.phone) {
+//       newErrors.phone = 'Required';
+//     }
 
-  // return (
-  //   <div>
-  //     <h1>Sign up</h1>
-  //     <form>
-  //       <div
-  //         className={`custom-input ${form.username &&
-  //           form.username.error &&
-  //           "custom-input-error"}`}
-  //       >
-  //         <label>Username </label>
-  //         <input
-  //           name="username"
-  //           value={(form.username && form.username.value) || ""}
-  //           onChange={handleChange}
-  //         />
-  //         {form.username && form.username.error && (
-  //           <p className="error">{form.username.error}</p>
-  //         )}
-  //       </div>
-  //       <div
-  //         className={`custom-input ${form.email &&
-  //           form.email.error &&
-  //           "custom-input-error"}`}
-  //       >
-  //         <label>Email </label>
-  //         <input
-  //           name="email"
-  //           value={(form.email && form.email.value) || ""}
-  //           onChange={handleChange}
-  //         />
-  //         {form.email && form.email.error && (
-  //           <p className="error">{form.email.error}</p>
-  //         )}
-  //       </div>
-  //       <div
-  //         className={`custom-input ${form.password &&
-  //           form.password.error &&
-  //           "custom-input-error"}`}
-  //       >
-  //         <label>Password </label>
-  //         <input
-  //           type="password"
-  //           name="password"
-  //           value={(form.password && form.password.value) || ""}
-  //           onChange={handleChange}
-  //         />
-  //         {form.password && form.password.error && (
-  //           <p className="error">{form.password.error}</p>
-  //         )}
-  //       </div>
-  //       <div
-  //         className={`custom-input ${form.confirmPassword &&
-  //           form.confirmPassword.error &&
-  //           "custom-input-error"}`}
-  //       >
-  //         <label>Confirm password </label>
-  //         <input
-  //           type="password"
-  //           name="confirmPassword"
-  //           value={(form.confirmPassword && form.confirmPassword.value) || ""}
-  //           onChange={handleChange}
-  //         />
-  //         {form.confirmPassword && form.confirmPassword.error && (
-  //           <p className="error">{form.confirmPassword.error}</p>
-  //         )}
-  //       </div>
-  //       <button type="button" onClick={handleSubmit}>
-  //         Submit
-  //       </button>
-  //     </form>
-  //   </div>
-  // );
+//     return newErrors;
+//   };
 
-  // Thực hành 2
-  // const MESSAGE_ERROR = {
-  //   email: "Email error",
-  //   password: "Password error"
-  // };
+//   const handleSubmit = () => {
+//     alert('Liên hệ đã được gửi đi!');
+//   };
 
-  // const REGEX = {
-  //   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  //   password: /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{6,}$/
-  // };
+//   return (
+//     <div>
+//       <Formik
+//         initialValues={form}
+//         validate={handleValidate}
+//         onSubmit={handleSubmit}
+//       >
+//         {({ values, errors, touched, handleSubmit, handleChange }) => (
+//           <form onSubmit={handleSubmit}>
+//             <label>
+//               Name:
+//               <input
+//                 type="text"
+//                 name="name"
+//                 value={values.name || ''}
+//                 onChange={handleChange}
+//               />
+//               {errors.name && touched.name && <div>{errors.name}</div>}
+//             </label>
+//             <label>
+//               Email:
+//               <input
+//                 type="email"
+//                 name="email"
+//                 value={values.email || ''}
+//                 onChange={handleChange}
+//               />
+//               {errors.email && touched.email && <div>{errors.email}</div>}
+//             </label>
+//             <label>
+//               Phone:
+//               <input
+//                 type="tel"
+//                 name="phone"
+//                 value={values.phone || ''}
+//                 onChange={handleChange}
+//               />
+//               {errors.phone && touched.phone && <div>{errors.phone}</div>}
+//             </label>
+//             <button type="submit">Submit</button>
+//           </form>
+//         )}
+//       </Formik>
+//     </div>
+//   );
+// }
 
-  // const [form, setForm] = useState({});
+//bt 3
+// export default App;
+// function App() {
+//   const REGEX = {
+//     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+//   };
+//   const [form, setForm] = useState({});
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
+//     setForm({ ...form, [name]: value });
+//   };
+//   const handleValidate = (values) => {
+//     const errors = {};
+//     let hasEmail = false;
+//     if (values.email) {
+//       hasEmail = true;
+//       if (!REGEX.email.test(values.email)) {
+//         errors.email = 'Invalid email address';
+//       }
+//     } else {
+//       errors.email = 'Required';
+//     }
+//     if (!values.title) {
+//       errors.title = 'Required';
+//     }
+//     return errors;
+//   };
+//   const [errors, setErrors] = useState({});
+//   const handleSubmit = (values) => {
+//     alert('Contact added successfully!');
+//   };
 
-  // function handleChange(event) {
-  //   let error = REGEX[event.target.name].test(event.target.value)
-  //     ? ""
-  //     : MESSAGE_ERROR[event.target.name];
-  //   setForm({
-  //     ...form,
-  //     [event.target.name]: { value: event.target.value, error: error }
-  //   });
-  // }
+//   return (
+//     <div className="App">
+//       <h1>Contact Form</h1>
+//       <Formik initialValues={form} onSubmit={handleSubmit} validate={handleValidate}>
+//         {({ values, handleSubmit, handleChange, errors }) => (
+//           <form onSubmit={handleSubmit}>
+//             <div>
+//               <label htmlFor="email">Email:</label>
+//               <input type="email" id="email" name="email" onChange={handleChange} value={values.email || ''} />
+//               {errors.email && <div>{errors.email}</div>}
+//             </div>
+//             <div>
+//               <label htmlFor="title">Title:</label>
+//               <input type="text" id="title" name="title" onChange={handleChange} value={values.title || ''} />
+//               {errors.title && <div>{errors.title}</div>}
+//             </div>
+//             <button type="submit">Submit</button>
+//           </form>
+//         )}
+//       </Formik>
+//     </div>
+//   );
+// }
 
-  // function handleSubmit() {
-  //   const isFilled =
-  //     form.email && form.email.value && form.password && form.password.value;
-  //   const isError = isFilled && (form.email.error || form.password.error);
-  //   alert(
-  //     isFilled && !isError
-  //       ? "Login in successfully!!!"
-  //       : "Please fill out all the fields!!!"
-  //   );
-  // }
+// export default App;
 
-  // return (
-  //   <div>
-  //     <h1>Login</h1>
-  //     <form>
-  //       <div
-  //         className={`custom-input ${form.email &&
-  //           form.email.error &&
-  //           "custom-input-error"}`}
-  //       >
-  //         <label>Email </label>
-  //         <input
-  //           name="email"
-  //           value={(form.email && form.email.value) || ""}
-  //           onChange={handleChange}
-  //         />
-  //         {form.email && form.email.error && (
-  //           <p className="error">Email error</p>
-  //         )}
-  //       </div>
-  //       <div
-  //         className={`custom-input ${form.password &&
-  //           form.password.error &&
-  //           "custom-input-error"}`}
-  //       >
-  //         <label>Password </label>
-  //         <input
-  //           type="password"
-  //           name="password"
-  //           value={(form.password && form.password.value) || ""}
-  //           onChange={handleChange}
-  //         />
-  //         {form.password && form.password.error && (
-  //           <p className="error">Password error</p>
-  //         )}
-  //       </div>
-  //       <button type="button" onClick={handleSubmit}>
-  //         Submit
-  //       </button>
-  //     </form>
-  //   </div>
-  // );
-
-  const REGEX = {
-    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-  };
-
+// bt 4
+function App() {
+  const SEX_LIST = [
+    { label: 'Nam', value: 'male' },
+    { label: 'Nữ', value: 'female' },
+  ];
   const [form, setForm] = useState({});
-
-  function handleChange(event) {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value
-    });
-  }
-
-  function handleValidate() {
+  const handleChange = (event) => {
+    const value = event.target.type === 'checkbox' ? !form[event.target.name] : event.target.value;
+    setForm({ ...form, [event.target.name]: value });
+  };
+  const handleValidate = (values) => {
     const errors = {};
-    if (!form.email) {
-      errors.email = "Required";
-    } else if (!REGEX.email.test(form.email)) {
-      errors.email = "Invalid email address";
-      console.log("code");
+    if (!values.name) {
+      errors.name = 'Required';
     }
-    if (!form.password) {
-      errors.password = "Required";
+    if (!values.number) {
+      errors.number = 'Required';
+    }
+    if (!values.author) {
+      errors.author = 'Required';
+    }
+    if (!values.sex) {
+      errors.sex = 'Required';
     }
     return errors;
-  }
-
-  function handleSubmit() {
-    alert("Login in successfully!!!");
-  }
+  };
+  const [errors, setErrors] = useState({});
+  const handleSubmit = (values) => {
+    alert('Book added successfully!');
+  };
 
   return (
-    <div>
-      <h1>Sign up</h1>
-      <Formik
-        initialValues={form}
-        validate={handleValidate}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, handleSubmit }) => (
+    <div className="App">
+      <h1>Book Form</h1>
+      <Formik initialValues={form} onSubmit={handleSubmit} validate={handleValidate}>
+        {({ values, handleSubmit, handleChange, errors }) => (
           <form onSubmit={handleSubmit}>
-            <div
-              className={`custom-input ${
-                errors.email ? "custom-input-error" : ""
-              }`}
-            >
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email || ""}
-                onChange={handleChange}
-              />
-              <p className="error">{errors.email}</p>
+            <div>
+              <label htmlFor="name">Name:</label>
+              <input type="text" id="name" name="name" onChange={handleChange} value={values.name || ''} />
+              {errors.name && <div className="error">{errors.name}</div>}
             </div>
-            <div
-              className={`custom-input ${
-                errors.password ? "custom-input-error" : ""
-              }`}
-            >
-              <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                value={form.password || ""}
-                onChange={handleChange}
-              />
-              <p className="error">{errors.password}</p>
+            <div>
+              <label htmlFor="number">Number:</label>
+              <input type="text" id="number" name="number" onChange={handleChange} value={values.number || ''} />
+              {errors.number && <div className="error">{errors.number}</div>}
+            </div>
+            <div>
+              <label htmlFor="author">Author:</label>
+              <input type="text" id="author" name="author" onChange={handleChange} value={values.author || ''} />
+              {errors.author && <div className="error">{errors.author}</div>}
+            </div>
+            <div>
+              <label htmlFor="sex">Sex:</label>
+              {SEX_LIST.map((option) => (
+                <label key={option.value}>
+                  <input
+                    type="radio"
+                    name="sex"
+                    value={option.value}
+                    checked={values.sex === option.value}
+                    onChange={handleChange}
+                  />
+                  {option.label}
+                </label>
+              ))}
+              {errors.sex && <div className="error">{errors.sex}</div>}
             </div>
             <button type="submit">Submit</button>
           </form>
         )}
       </Formik>
+      <h2>Book List</h2>
+      {/* Render the list of books */}
     </div>
   );
 }
+
+export default App;
+
+
+
