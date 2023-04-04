@@ -1,19 +1,20 @@
-
-// import StudentInfoComponent from './StudentInfoComponent';
-// import "./App.css";
-// const students = [
-//   { id: 1, name: "Tạ Đình Phong", age: 25, address: "Quần Đảo Hoàng Sa" },
-//   { id: 2, name: "Trịnh Phong Tâm", age: 31, address: "Miền Tây Nam Bộ" },
-//   { id: 3, name: "Nguyễn Như Ngọc", age: 22, address: "Gio Linh" },
-// ];
-
+// import Selector from "./components/Selector";
+import React, { useState } from 'react';
+import MyClock from "./components/MyClock";
+import "./App.css";
 // function App() {
-//   return (
-//     <div className="App">
-//       <h1>Student List</h1>
-//       <StudentInfoComponent students={students} />
-//     </div>
-//   );
+//   return <Selector />;
 // }
 
 // export default App;
+
+
+function App() {
+  return (
+    <div class="Container">
+      <MyClock />
+    </div>
+  );
+}
+
+export default App;
