@@ -1,31 +1,16 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Category from "./pages/Category";
-// import Product from "./pages/Product";
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Category />} />
-//         <Route path="/product/:categoryId" element={<Product />} />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-// export default App;
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Category from "./pages/Category";
-import Product from "./pages/Product";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login.js";
+import Employee from "./components/Employee.js";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Category />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/employee" element={<Employee />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
