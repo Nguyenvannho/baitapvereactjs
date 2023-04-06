@@ -1,11 +1,9 @@
-import Layout from "./layout";
+import Layout from "../components/Layout";
 
-function Blog() {
+export default function Blog() {
   return (
     <Layout>
-      <h1>Blog page</h1>
+      <h1>Blog</h1>
     </Layout>
   );
 }
-
-export default Blog;
