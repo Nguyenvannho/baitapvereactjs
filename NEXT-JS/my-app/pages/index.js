@@ -2,7 +2,10 @@
 // import React from 'react';
 // import Header from '@/components/Header';
 // import Footer from '@/components/Footer';
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
+import styles from '../styles/Login.module.css';
+
+
 
 
 // //Controller
@@ -52,11 +55,40 @@ export async function getServerSideProps(context) {
 // }
 // export default index;
 
-export default function Home() {
+
+export default function Login() {
   return (
-    <Layout>
-      <h1>Homepage</h1>
-    </Layout>
+    <div className={styles.wrapper}>
+      <div className={styles.formContent}>
+        <h2 className={styles.header}>Login</h2>
+        <form>
+          <div className={styles.inputContainer}>
+            <label htmlFor="login" className={styles.label}>Username:</label>
+            <input
+              className={styles.input}
+              type="text"
+              id="login"
+              name="login"
+              placeholder="Enter your username"
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label htmlFor="password" className={styles.label}>Password:</label>
+            <input
+              className={styles.input}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit" className={styles.button}>
+            Log In
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
+
 
