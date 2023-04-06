@@ -3,7 +3,9 @@
 // import Header from '@/components/Header';
 // import Footer from '@/components/Footer';
 // import Layout from "../components/Layout";
-import styles from '../styles/Login.module.css';
+// import styles from '../styles/Login.module.css';
+import axios from 'axios';
+
 
 
 
@@ -54,41 +56,35 @@ export async function getServerSideProps(context) {
 //   );
 // }
 // export default index;
-
-
-export default function Login() {
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.formContent}>
-        <h2 className={styles.header}>Login</h2>
-        <form>
-          <div className={styles.inputContainer}>
-            <label htmlFor="login" className={styles.label}>Username:</label>
-            <input
-              className={styles.input}
-              type="text"
-              id="login"
-              name="login"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="password" className={styles.label}>Password:</label>
-            <input
-              className={styles.input}
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button type="submit" className={styles.button}>
-            Log In
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+export async function getStaticProps() {
+  const response = await axios.get('https://api.covid19api.com/total/country/vietnam');
+  const data = response.data;
+  return {
+    props: {
+      data
+    }
+  }
 }
+export default function Home({ data }) {
+  return (
+    <div>
+      <h1>COVID-19 tại Việt Nam</h1>
+      <ul>
+        {data.map(item => (
+          <li key={item.Date}>
+            <div>Ngày thống kê: {item.Date}</div>
+            <div>Số ca được xác nhận: {item.Confirmed}</div>
+            <div>Số ca đang điều trị: {item.Active}</div>
+            <div>Số ca đã khỏi: {item.Recovered}</div>
+            <div>Số ca tử vong: {item.Deaths}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+
+
 
 
