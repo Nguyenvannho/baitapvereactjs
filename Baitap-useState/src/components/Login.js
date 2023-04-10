@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
 // import { useNavigate } from "react-router-dom";
 
 // export default function Login() {
@@ -42,8 +39,6 @@ import { useNavigate } from 'react-router-dom';
 //     </form>
 //   );
 // }
-
-
 
 function Login() {
     const [email, setEmail] = useState("");

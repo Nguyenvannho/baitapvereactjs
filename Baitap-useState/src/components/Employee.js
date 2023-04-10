@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 function Employee() {
   const location = useLocation();
-  const account = location.state?.account;
+//   const account = location.state?.account;
 
   const employees = [
     { id: 1, name: "Hoa", age: 20 },
@@ -31,7 +31,6 @@ function Employee() {
               <td>{employee.age}</td>
               <td>
               <Link to={`/employee/${employee.id}`}>Detail</Link>
-
               </td>
             </tr>
           ))}

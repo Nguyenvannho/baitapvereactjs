@@ -57,7 +57,9 @@ export async function getServerSideProps(context) {
 // }
 // export default index;
 export async function getStaticProps() {
-  const response = await axios.get('https://api.covid19api.com/total/country/vietnam');
+  const response = await axios.get(
+    'https://api.openweathermap.org/data/2.5/weather?q=hanoi&units=metric&appid={API Key}'
+  );
   const data = response.data;
   return {
     props: {
@@ -65,24 +67,20 @@ export async function getStaticProps() {
     }
   }
 }
+
 export default function Home({ data }) {
+  const { main, weather } = data;
+
   return (
     <div>
-      <h1>COVID-19 tại Việt Nam</h1>
-      <ul>
-        {data.map(item => (
-          <li key={item.Date}>
-            <div>Ngày thống kê: {item.Date}</div>
-            <div>Số ca được xác nhận: {item.Confirmed}</div>
-            <div>Số ca đang điều trị: {item.Active}</div>
-            <div>Số ca đã khỏi: {item.Recovered}</div>
-            <div>Số ca tử vong: {item.Deaths}</div>
-          </li>
-        ))}
-      </ul>
+      <h1>Thời tiết tại Hà Nội</h1>
+      <div>Nhiệt độ: {main.temp} &#8451;</div>
+      <div>Cảm giác như: {main.feels_like} &#8451;</div>
+      <div>Trạng thái thời tiết: {weather[0].description}</div>
     </div>
   )
 }
+
 
 
 
